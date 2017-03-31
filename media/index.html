@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Title</title>
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+
+    <style>
+        *{margin: 0;padding:0; font-family: Arial;}
+        ul,ol{list-style: none}
+        a{text-decoration: none}
+        .inner{width:1140px; margin: 0 auto; transition: all 0.5s;}
+        header{height:64px; width:100%; line-height:64px; position: absolute; z-index:3;}
+        .logo{float: left;  padding-top:11px;}
+        .logo img{width:120px;}
+        .tel{float: right; font-size: 14px; color:#fff;}
+        .clear:after{content:"."; height:0;  clear:both; font-size:0; display:block;}
+        .clear{*zoom:1;}
+
+        .video{height:600px; overflow: hidden; position: relative;  transition: all 0.5s;}
+        .video video{width:100%; height:100%; object-fit: cover; object-position: 0;}
+        .text-block{position: absolute; top:0; left:0; width:100%;height:100%; text-align: center;}
+        .middle{ width:100%;height:100%; display: table;}
+        .middle h2{display: table-cell; vertical-align: middle; color: #fff;}
+
+        .why{background: #e8e8e8; text-align: center; padding-bottom: 47px;}
+        .why h2,.how h2{font-size:25px; color:#ef4d4d; line-height: 79px; padding: 32px 0 0 0;}
+        .why .pp,.how .pp{font-size:16px; color:#525252; line-height: 21px; width:550px; margin: 0 auto;}
+        .why .bigBox{margin-top:35px;}
+        .left{ transition: all 0.5s; float:left; width:360px; height:325px; background: #fff; box-shadow: 1px 3px #cdcdcd; position: relative; z-index:2;}
+        .left:before{content:'';width:180px; height:180px; position: absolute;left:50%; top:-30px;; border-radius: 50%; background: #fff; transform: translateX(-50%); z-index:-1;}
+        .left img{width:110px;}
+        .left:nth-child(2){margin:0 30px;}
+        .why h3{line-height: 50px; color: #7d7d7d; font-size: 30px; font-weight: normal;}
+        .why .left p{line-height: 24px; color: #7d7d7d; font-size: 16px;}
+        .old{background:#909090 url("images/testimonial.jpg") no-repeat center top/cover; height: 360px; color:#fff;
+            background-blend-mode:multiply; text-align: center;}
+        .old .fa-quote-left{font-size:24px; padding-top: 70px;}
+        .old p{line-height: 24px; padding-top:60px; font-size:18px;}
+        .old .fa-star{color:#efd64d; padding-top:35px;}
+        .how{text-align: center; width:1154px; margin: 0 auto; padding-bottom: 50px;}
+        .how .pp{width: auto;}
+        .news{margin-top: 35px;}
+        .news .con{ transition: all 0.5s; width:224px; float:left; min-height:250px; position:relative; padding: 0 30px; text-align: left; margin-right: 6px;}
+        .news .con:last-child{margin-right: 0;}
+        .news .con:before{content: ""; width:100%; height:50%; position: absolute;left:0; top:0; background: #f1f1f1; z-index: -1; transform: skew(15deg,0deg)}
+        .news .con:after{content: ""; width:100%; height:50%; position: absolute;left:0; top:50%; background: #f1f1f1; z-index: -1; transform: skew(-15deg,0deg)}
+        .news .con img{width:31px;}
+        .news .con .pic{text-align: right; padding: 10px 0 5px 0;}
+        .news h3{line-height: 44px; font-size: 22px; color: #525252; font-weight:normal; }
+        .news p{line-height: 25px; font-size: 15px; color: #525252;}
+        footer{background: #5d5d5d; padding-top: 35px; height:215px;}
+        footer a{color: #fff;}
+        footer ul{float:left; width:243px; color: #fff; line-height: 31px;}
+        .footer_p{margin-left: 97px;}
+        .bot{background: #444444; height:50px; line-height: 50px; color: #7d7d6a; text-align: center;}
+        #i i{display:inline-block; margin-right:3px; width:24px; height:24px; background-color: #6a6a6a; border-radius: 50%; text-align: center; line-height: 24px;}
+
+        @media screen and (max-width: 1200px){
+            .video{height:auto;}
+        }
+        @media screen and (max-width: 1156px){
+            .how{width:96%;}
+            .how .news .con{width:19%; padding: 0 2.5%;margin-right: 0.5%;}
+            .bot{height:auto;}
+        }
+        @media screen and (max-width: 1140px){
+            header .inner{width:96%;}
+            .inner{width:96%;}
+            .why .left{width:31%;}
+            .why .left:nth-child(2){margin: 0 2.6%;}
+            footer ul{width:21%;}
+        }
+        @media  screen and (max-width: 1024px){
+            .why .pp{width:auto;}
+            .why .left{width:80%; float:none; margin: 0 auto;}
+            .why .left:nth-child(2){margin:0 auto;}
+            .how .news .con{width:80%; float:none; margin: 0 auto 1px; min-height:auto; padding-bottom: 20px;}
+            .how .news .con:before,.how .news .con:after{transform: skew(0deg,0deg);}
+            .news .con .pic{text-align: center;}
+            footer .inner{width:80%;}
+            footer ul:nth-child(1){margin-left:0; }
+            footer ul{width:33%;}
+            footer ul:last-child{width:100%}
+            footer ul:last-child li{float: left; margin-right:5px;}
+            footer li span{display: none;}
+        }
+        @media screen and (max-width:768px){
+            .why .left{width:100%}
+            .how .news .con{width:95%}
+        }
+        @media screen and (max-width:640px){
+            .middle h2{font-size: 30px}
+            footer{height: auto; padding-bottom: 20px;}
+        }
+
+        @media screen and (max-width:480px){
+            .middle h2{font-size: 20px;}
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="inner">
+        <div class="logo"><img src="images/loanpal-logo--contrast.png"> </div>
+        <div class="tel">(844) 562-6725</div>
+    </div>
+</header>
+<section class="video">
+    <video autoplay="autoplay" loop="loop">
+        <source src="media/WebVid.mp4" type="video/mp4">
+    </video>
+    <div class="text-block">
+        <div class="middle">
+            <h2>
+                The modern mortgage that's<br/>
+                inexpensive, easy, and completely transparent.
+            </h2>
+        </div>
+    </div>
+</section>
+<section class="why">
+    <div class="inner">
+        <h2>Why Choose loanpal?</h2>
+        <p class="pp">We're changing mortgage forever by building a technology-enabled process that puts you in control.</p>
+        <div class="bigBox clear">
+            <div class="left">
+                <img src="images/loanpal-icons-speed.svg">
+                <h3>Simple & Fast</h3>
+                <p>Our state-of-the-art technology ensures your loan process is fast and easy, the way it should be.
+                </p>
+            </div>
+            <div class="left">
+                <img src="images/loanpal-icon-fees.svg">
+                <h3>Really Great Rates</h3>
+                <p>Our streamlined process reduces costs that we pass on to you through super low rates. We eliminated lender fees too, because who wants to pay those!
+                </p>
+            </div>
+            <div class="left">
+                <img src="images/loanpal-icon-rates.svg">
+                <h3>No Hidden Fees</h3>
+                <p>We give you clear answers to all your questions so you can make smarter choices. And, we put our rates online so you know exactly what you're getting with no surprises.
+                </p>
+            </div>
+        </div>
+
+    </div>
+</section>
+<section class="old">
+    <div class="inner">
+        <i class="fa fa-quote-left"></i>
+        <p>"Working with Stephanie was great, fantastic, excellent... She was knowledgeable, responsive, helped accomplish what was needed, and then some. She was easy to talk to, built a good rapport.
+            Out of a rating of 5 would rate her a 6."</p>
+        <div class="star">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+        </div>
+
+    </div>
+</section>
+<section class="how">
+        <h2>How loanpal Works</h2>
+        <p class="pp">Our highly efficient, lending experience that drives costs out and passes that savings back to you.</p>
+    <div class="news clear">
+        <div class="con">
+            <div class="pic"><img src="images/step1.svg"></div>
+            <h3>Choose your rate</h3>
+            <p>Use our online rate search technology to choose that rate and payment that's perfect for you.</p>
+        </div>
+        <div class="con">
+            <div class="pic"><img src="images/step1.svg"></div>
+            <h3>Apply for your loan</h3>
+            <p>Apply online or call one of our customer support specialists who can take you through the application process.</p>
+        </div>
+        <div class="con">
+            <div class="pic"><img src="images/step1.svg"></div>
+            <h3>Get approved</h3>
+            <p>We'll take care of everything and let you know once your loan is approved. It's fast, easy, and hassle-free.</p>
+        </div>
+        <div class="con">
+            <div class="pic"><img src="images/step1.svg"></div>
+            <h3>Close your loan</h3>
+            <p>We make that easy too. We'll come to you at home, work or any place you like to close your loan.
+            </p>
+        </div>
+    </div>
+
+</section>
+<footer class="footer clear">
+    <div class="inner">
+        <ul class=" footer_p">
+            <li><a href="#">Why loanpal</a> </li>
+            <li><a href="#">Our Team</a></li>
+        </ul>
+        <ul>
+            <li><a href="#">Articles</a></li>
+            <li><a href="#">Calculators</a></li>
+            <li><a href="#">Glossary</a></li>
+            <li><a href="#">FAQs</a></li>
+        </ul>
+        <ul>
+            <li><a href="#">(844) 562-6725</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Use</a></li>
+            <li><a href="#">Disclosures & Licensing</a></li>
+        </ul>
+        <ul id="i">
+            <li><a href="#"><i class="fa fa-twitter"></i><span>Twitter</span></a></li>
+            <li><a href="#"><i class="fa fa-facebook"></i><span>Facebook</span></a></li>
+            <li><a href="#"><i class="fa fa-youtube"></i><span>Youtube</span></a></li>
+            <li><a href="#"><i class="fa fa-google"></i><span>Google</span></a></li>
+            <li><a href="#"><i class="fa fa-instagram"></i><span>Instagram</span></a></li>
+            <li><a href="#"><i class="fa fa-weibo"></i><span>weibo</span></a></li>
+        </ul>
+
+    </div>
+</footer>
+<section class="bot"> 2016 loanpal?. All rights reserved. Lending services provided by Paramount Equity Mortgage?, LLC. 8781 Sierra College Blvd, Roseville, CA 95661. NMLS# 30336.</section>
+</body>
+</html>

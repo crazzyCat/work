@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-3.1.0.js"></script>
+    <style>
+        body{background: #000; }
+        .con{width:980px; height:500px; position:absolute; left: 0;top:0;right:0;bottom: 0; margin:auto;}
+        .item{
+            width:196px;
+            height:100px;
+            position: absolute;
+            background-color: #fff;;
+            transition: transform 1s;
+        }
+        .item .pic{
+            height:100%;
+            transition: transform 1s;
+
+        }
+    </style>
+    <script>
+        $(function(){
+            add();
+            showAll();
+
+            var items=$(".item");
+            var key=true;
+            items.click(function(){
+                var i=items.index($(this))
+
+//                if(key){
+//                    var index=items.index(this)
+//                    showOne(index)
+//                    console.log("da")
+//                }else{
+//
+//                    showAll()
+//                    console.log("xiao")
+//                }
+//                key=!key
+                items.each(function(){
+                    var r=Math.random()*1000;
+                    if(key){
+                        $(this).delay(r).animate({"opacity":"0.1"},1000,function(){
+                            console.log(i)
+                                    showOne(i) })
+                                .animate({"opacity":"1"},1000)
+
+
+                    }else{
+                        $(this).animate(
+                                {"opacity":"0.7"},1000,function(){
+                                    showAll()
+                                })
+                                .delay(r).animate({"opacity":"1"},1000)
+                    }
+                })
+
+                  key=!key
+            })
+            function add(){
+                var con=$(".con");
+                for (var i=0;i<25;i++){
+                    var x=parseInt(i % 5);
+                    var y=parseInt(i / 5);
+                    $("<div class='item'><div class='pic'></div> </div>")
+                            .appendTo(con)
+                            .css(
+                                    {
+                                        "left":function(){
+                                            return x*196+"px";
+                                        },
+                                        "top":function(){
+                                            return y*100+"px";
+                                        }
+                                    }
+                            )
+                            .find(".pic")
+                            .css(
+                                    "background-position",function() {
+                                        return x * -196 + "px " + y * -100 + "px";
+                                    })
+                }
+            }
+            function showAll(){
+                var pics=$(".item .pic")
+                var items=$(".item");
+                pics.css("background-size","cover").each(function(index){
+                    $(this).css("background-image","url('images/"+index+".jpg')")
+                })
+
+                pics.css("transform","scale(0.95)");
+                items.each(function(i){
+                    var x=i%5;
+                    var y=parseInt(i/5);
+                    var offsetX=50*x-100;
+                    var offsetY=50*y-100;
+                    var rotate=Math.random()*60-30;
+                    $(this).css("transform","translate("+offsetX+"px, "+offsetY+"px) "+"rotate("+rotate+"deg)");
+                });
+            }
+            function showOne(index){
+                var items=$(".item")
+                var pics=$(".item .pic")
+                    pics.css("background-image","url('images/"+index+".jpg')")
+                            .css("background-size","auto")
+                pics.css("transform","scale(1)");
+                items.each(function(){
+                    $(this).css("transform","translate(0px, 0px) rotate(0deg)");
+                });
+            }
+        })
+    </script>
+</head>
+<body>
+<div class="con">
+
+</div>
+</body>
+</html>
